@@ -52,12 +52,7 @@ cat > $resultdir/$branch/$branch.json <<EOF
 }
 EOF
 
-if [ "$branch" = "trunk-thin-lvhd-2" ]; then
-  boxname=xs-thin-lvhd
-else
-  boxname=xs-$branch
-fi
-
+boxname=xs-$branch
 echo boxname=$boxname
 
 
