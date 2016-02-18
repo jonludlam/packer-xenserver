@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-	<installation srtype="ext">
+<installation>
 	<primary-disk>sda</primary-disk>
-	<keymap>us</keymap>
+	<keymap>uk</keymap>
 	<source type="local"></source>
-	<root-password>password</root-password>
-	<network-backend>bridge</network-backend> 
+	<root-password>xenroot</root-password>
 	<admin-interface name="eth0" proto="dhcp" />
 	<timezone>Europe/London</timezone>
 	<time-config-method>ntp</time-config-method>

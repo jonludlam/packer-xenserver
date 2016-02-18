@@ -1,0 +1,23 @@
+#!/bin/bash
+# Remove the host/control domain uuids from the inventory and construct new ones
+# The host one comes from the underlying VM uuid, the control domain is random
+
+set -e
+set -x
+
+stamp=/var/lib/xcp/veryfirst
+
+if [ ! -e $stamp ]; then
+   grep -v "INSTALLATION_UUID" /etc/xensource-inventory > /tmp/xensource-inventory2
+   grep -v "CONTROL_DOMAIN_UUID" /tmp/xensource-inventory2 > /tmp/xensource-inventory
+
+   mv /tmp/xensource-inventory /etc/
+   host=`dmidecode | grep UUID | awk '{print $2}' | tr [:upper:] [:lower:]`
+   echo "INSTALLATION_UUID='$host'" >> /etc/xensource-inventory
+   control=`uuidgen`
+   echo "CONTROL_DOMAIN_UUID='$control'" >> /etc/xensource-inventory
+   
+   # Write stamp now, in case something below fails
+   mkdir -p $(dirname $stamp)
+   touch $stamp
+fi

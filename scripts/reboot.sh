@@ -1,2 +1,2 @@
-reboot
-sleep 60
+reboot -f > /dev/null &
+
