@@ -21,7 +21,7 @@ resultdir=/local/bigdisc/vagrant
 escapedbranch=`echo $branch | sed sx/x%252Fxg`
 vagrantboxname=`echo $branch | sed sx/x-xg`
 
-JVERSION=`curl "https://$bvtuser:$bvtpass@ratchet.do.citrite.net/job/xenserver-specs/job/$escapedbranch/api/json" | jq .lastSuccessfulBuild.number`
+JVERSION=`curl "https://$bvtuser:$bvtpass@ratchet.do.citrite.net/job/xenserver-build/job/$escapedbranch/api/json" | jq .lastSuccessfulBuild.number`
 
 if [ "x"$buildoverride != "x" ]; then
 	VERSION=$buildoverride
